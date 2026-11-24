@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#d9dcd2" />
+    <meta name="description" content="云栖寺 · 一座安静的在线山寺。扫地、挑水、敲木鱼、念珠、礼拜、上香，慢慢修行。" />
+    <title>云栖寺 · Online Temple</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+    <div id="hud" class="hud"></div>
+    <div id="toasts" class="toasts"></div>
+    <div id="beads" class="overlay" hidden></div>
+    <div id="fish" class="overlay" hidden></div>
+    <div id="sheet" class="sheet" hidden></div>
+    <div id="splash" class="splash">
+      <div class="splash-inner">
+        <div class="seal">云栖</div>
+        <h1 id="splashTitle">云栖寺</h1>
+        <p id="splashSub"></p>
+        <button id="enter" class="btn big" disabled></button>
+        <p class="splash-foot">中文 / English · <span id="splashLang"></span></p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
