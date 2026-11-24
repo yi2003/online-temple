@@ -5,16 +5,24 @@ import { getLang, onLang, setLang, t } from './i18n.ts';
 import { net } from './net.ts';
 import { store } from './state/store.ts';
 import { Hud } from './ui/hud.ts';
+import { isSplashOpen, trapSplashFocus } from './ui/splashFocus.ts';
 
 const $ = (id: string) => document.getElementById(id)!;
 
+const splash = $('splash');
+const splashFocus = trapSplashFocus(
+  splash,
+  ['scene', 'hud', 'beads', 'fish', 'sheet'].map((id) => $(id)),
+);
+
 function renderSplash() {
+  document.title = `${t('title')} · ${getLang() === 'zh' ? 'Online Temple' : '在线寺庙'}`;
+  if (!isSplashOpen()) return;
   $('splashTitle').textContent = t('title');
   $('splashSub').textContent = t('subtitle');
   const enter = $('enter') as HTMLButtonElement;
   enter.textContent = enter.disabled ? t('loading') : t('tapToEnter');
   $('splashLang').textContent = getLang() === 'zh' ? 'English' : '中文';
-  document.title = `${t('title')} · ${getLang() === 'zh' ? 'Online Temple' : '在线寺庙'}`;
 }
 setLang(getLang());
 renderSplash();
@@ -47,10 +55,16 @@ function boot() {
   const enter = $('enter') as HTMLButtonElement;
   enter.disabled = false;
   renderSplash();
+  splashFocus.focusEntry();
+  let entered = false;
   enter.onclick = () => {
+    if (entered) return;
+    entered = true;
     sound.start();
-    $('splash').classList.add('gone');
-    setTimeout(() => $('splash').remove(), 1300);
+    enter.disabled = true;
+    splashFocus.release();
+    splash.classList.add('gone');
+    setTimeout(() => splash.remove(), 1300);
     hud.showHint(game.input.touchUsed || matchMedia('(pointer: coarse)').matches);
   };
   // any first gesture unlocks audio

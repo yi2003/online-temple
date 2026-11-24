@@ -9,13 +9,13 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <canvas id="scene"></canvas>
-    <div id="hud" class="hud"></div>
+    <canvas id="scene" inert></canvas>
+    <div id="hud" class="hud" inert></div>
     <div id="toasts" class="toasts"></div>
-    <div id="beads" class="overlay" hidden></div>
-    <div id="fish" class="overlay" hidden></div>
-    <div id="sheet" class="sheet" hidden></div>
-    <div id="splash" class="splash">
+    <div id="beads" class="overlay" hidden inert></div>
+    <div id="fish" class="overlay" hidden inert></div>
+    <div id="sheet" class="sheet" hidden inert></div>
+    <div id="splash" class="splash" role="dialog" aria-modal="true" aria-labelledby="splashTitle" tabindex="-1">
       <div class="splash-inner">
         <div class="seal">云栖</div>
         <h1 id="splashTitle">云栖寺</h1>

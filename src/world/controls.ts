@@ -2,6 +2,7 @@
 // movement on the walkable map, and a third-person camera that avoids walls.
 import * as THREE from 'three';
 import type { AreaId } from '../state/progress.ts';
+import { isSplashOpen } from '../ui/splashFocus.ts';
 import { canStep, walkHeight, zoneAt, type Zone } from './layout.ts';
 import type { Monk } from './monk.ts';
 
@@ -30,7 +31,8 @@ export class Input {
     document.body.appendChild(this.joyEl);
 
     addEventListener('keydown', (e) => {
-      if ((e.target as HTMLElement).closest('input, textarea')) return;
+      if (isSplashOpen()) return;
+      if ((e.target as HTMLElement | null)?.closest?.('input, textarea')) return;
       this.keys.add(e.code);
       if (e.code === 'KeyE' || e.code === 'Enter') this.interactPressed = true;
     });
