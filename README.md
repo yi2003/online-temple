@@ -1,5 +1,14 @@
 # 云栖寺 · Online Temple
 
+**🌐 Live demo / 在线体验: https://online-temple-eight.vercel.app**
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Mountain gate](docs/screenshots/scene-desktop.webp) | ![Daily practices](docs/screenshots/daily-desktop.webp) |
+| ![108 prayer beads](docs/screenshots/beads-desktop.webp) | <img src="docs/screenshots/scene-mobile.webp" alt="Mobile view" height="320"> |
+
 A quiet, original 3D mountain temple in the browser. You are a little novice monk (小和尚): walk the courtyard, sweep, carry water, strike the wooden fish, count 108 beads, bow and offer incense, and slowly grow through six ranks. There's no combat, no chat, no leaderboard and nothing to buy.
 
 Built with Vite, TypeScript and three.js. It's mobile-first (touch joystick, drag to look, pinch to zoom), also plays on desktop (WASD, mouse drag, scroll, E), and has a Chinese/English UI.
